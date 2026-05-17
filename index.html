@@ -1,1098 +1,619 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ash Haven Global Ltd — Import · Export · General Goods</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet"/>
-<style>
-  :root {
-    --navy: #0d2a5c;
-    --navy-deep: #071a3e;
-    --orange: #e87722;
-    --orange-light: #f5a04a;
-    --white: #ffffff;
-    --off-white: #f4f6fb;
-    --gray: #6b7a99;
-    --light-gray: #e8edf5;
-  }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-font-family: ‘Barlow’, sans-serif;
-color: var(–navy-deep);
-background: var(–white);
-overflow-x: hidden;
-}
-
-/* ── NAV ── */
-nav {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-display: flex; align-items: center; justify-content: space-between;
-padding: 0 5vw;
-height: 72px;
-background: rgba(7, 26, 62, 0.95);
-backdrop-filter: blur(12px);
-border-bottom: 2px solid var(–orange);
-}
-
-.nav-logo {
-display: flex; align-items: center; gap: 14px;
-text-decoration: none;
-}
-
-.nav-logo-icon {
-width: 48px; height: 48px;
-position: relative; flex-shrink: 0;
-}
-
-/* SVG Recreation of the logo mark */
-.nav-logo-text {
-display: flex; flex-direction: column; line-height: 1;
-}
-.nav-logo-text .brand { font-family: ‘Bebas Neue’, sans-serif; font-size: 20px; color: var(–white); letter-spacing: 2px; }
-.nav-logo-text .sub { font-family: ‘Barlow Condensed’, sans-serif; font-size: 9px; color: var(–orange); letter-spacing: 3px; text-transform: uppercase; margin-top: 3px; }
-
-.nav-links {
-display: flex; gap: 36px; list-style: none;
-}
-.nav-links a {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-color: rgba(255,255,255,0.75); text-decoration: none;
-transition: color .2s;
-}
-.nav-links a:hover { color: var(–orange); }
-
-.nav-cta {
-background: var(–orange); color: var(–white) !important;
-padding: 8px 20px; border-radius: 2px;
-}
-.nav-cta:hover { background: var(–orange-light); color: var(–white) !important; }
-
-/* ── HERO ── */
-#hero {
-min-height: 100vh;
-background: var(–navy-deep);
-display: grid;
-grid-template-columns: 1fr 1fr;
-position: relative;
-overflow: hidden;
-padding-top: 72px;
-}
-
-.hero-geo {
-position: absolute; inset: 0; pointer-events: none;
-overflow: hidden;
-}
-.hero-geo::before {
-content: ‘’;
-position: absolute; right: -10%; top: -10%;
-width: 70vw; height: 110vh;
-background: linear-gradient(135deg, var(–navy) 0%, transparent 60%);
-transform: skewX(-8deg);
-}
-.hero-geo::after {
-content: ‘’;
-position: absolute;
-right: 30%; bottom: -5%;
-width: 40vw; height: 40vw;
-border-radius: 50%;
-background: radial-gradient(circle, rgba(232,119,34,0.12) 0%, transparent 70%);
-}
-
-/* World grid lines */
-.hero-grid-lines {
-position: absolute; inset: 0; pointer-events: none;
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-background-size: 60px 60px;
-}
-
-.hero-left {
-display: flex; flex-direction: column; justify-content: center;
-padding: 80px 5vw 80px 8vw;
-position: relative; z-index: 2;
-}
-
-.hero-tag {
-display: inline-flex; align-items: center; gap: 10px;
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
-color: var(–orange); margin-bottom: 28px;
-}
-.hero-tag::before {
-content: ‘’; width: 32px; height: 2px; background: var(–orange);
-}
-
-.hero-h1 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(52px, 6vw, 92px);
-line-height: 0.95;
-color: var(–white);
-letter-spacing: 2px;
-margin-bottom: 28px;
-}
-.hero-h1 span { color: var(–orange); }
-
-.hero-p {
-font-size: 16px; font-weight: 300; line-height: 1.75;
-color: rgba(255,255,255,0.65);
-max-width: 460px; margin-bottom: 44px;
-}
-
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-
-.btn-primary {
-background: var(–orange); color: var(–white);
-padding: 14px 36px;
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-text-decoration: none; border-radius: 2px;
-transition: background .2s, transform .15s;
-display: inline-block;
-}
-.btn-primary:hover { background: var(–orange-light); transform: translateY(-2px); }
-
-.btn-outline {
-border: 1.5px solid rgba(255,255,255,0.35); color: var(–white);
-padding: 14px 36px;
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-text-decoration: none; border-radius: 2px;
-transition: border-color .2s, transform .15s;
-display: inline-block;
-}
-.btn-outline:hover { border-color: var(–orange); color: var(–orange); transform: translateY(-2px); }
-
-.hero-stats {
-display: flex; gap: 40px; margin-top: 60px;
-border-top: 1px solid rgba(255,255,255,0.1);
-padding-top: 40px;
-}
-.hero-stat-num {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 42px; color: var(–orange); line-height: 1;
-}
-.hero-stat-label {
-font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-color: rgba(255,255,255,0.45); margin-top: 4px;
-}
-
-.hero-right {
-display: flex; align-items: center; justify-content: center;
-position: relative; z-index: 2;
-}
-
-/* Big logo watermark in hero */
-.hero-logo-display {
-position: relative;
-display: flex; align-items: center; justify-content: center;
-}
-.hero-logo-bg {
-width: 380px; height: 380px;
-background: rgba(255,255,255,0.04);
-border-radius: 50%;
-border: 1px solid rgba(232,119,34,0.2);
-display: flex; align-items: center; justify-content: center;
-position: relative;
-}
-.hero-logo-bg::before {
-content: ‘’;
-position: absolute; inset: 20px;
-border-radius: 50%;
-border: 1px solid rgba(232,119,34,0.1);
-}
-.hero-logo-bg::after {
-content: ‘’;
-position: absolute; inset: 40px;
-border-radius: 50%;
-border: 1px dashed rgba(255,255,255,0.07);
-}
-.hero-logo-img {
-width: 220px; height: 220px; object-fit: contain;
-filter: drop-shadow(0 0 40px rgba(232,119,34,0.4));
-animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-0%, 100% { transform: translateY(0); }
-50% { transform: translateY(-12px); }
-}
-
-/* ── SERVICES ── */
-#services {
-background: var(–off-white);
-padding: 100px 8vw;
-}
-
-.section-header {
-text-align: center; margin-bottom: 64px;
-}
-.section-tag {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
-color: var(–orange); display: block; margin-bottom: 16px;
-}
-.section-h2 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(36px, 4vw, 60px);
-color: var(–navy-deep); letter-spacing: 2px;
-line-height: 1;
-}
-.section-h2 span { color: var(–orange); }
-.section-rule {
-width: 48px; height: 3px;
-background: linear-gradient(90deg, var(–navy), var(–orange));
-margin: 20px auto 0;
-border-radius: 2px;
-}
-
-.services-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-gap: 28px;
-}
-
-.service-card {
-background: var(–white);
-border-radius: 4px;
-padding: 44px 36px;
-border-top: 4px solid transparent;
-transition: border-color .25s, transform .25s, box-shadow .25s;
-position: relative; overflow: hidden;
-}
-.service-card::after {
-content: ‘’;
-position: absolute; bottom: 0; left: 0; right: 0; height: 0;
-background: linear-gradient(to top, rgba(13,42,92,0.04), transparent);
-transition: height .3s;
-}
-.service-card:hover { border-top-color: var(–orange); transform: translateY(-6px); box-shadow: 0 20px 48px rgba(13,42,92,0.12); }
-.service-card:hover::after { height: 100%; }
-
-.service-icon {
-width: 56px; height: 56px; border-radius: 50%;
-background: linear-gradient(135deg, var(–navy), #1a4a8a);
-display: flex; align-items: center; justify-content: center;
-margin-bottom: 28px;
-font-size: 24px;
-}
-.service-h3 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 24px; letter-spacing: 1.5px; color: var(–navy-deep);
-margin-bottom: 14px;
-}
-.service-p {
-font-size: 14px; font-weight: 300; line-height: 1.8;
-color: var(–gray);
-}
-.service-link {
-display: inline-flex; align-items: center; gap: 8px;
-margin-top: 24px;
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-color: var(–orange); text-decoration: none;
-transition: gap .2s;
-}
-.service-link:hover { gap: 14px; }
-
-/* ── ABOUT ── */
-#about {
-background: var(–navy-deep);
-padding: 100px 8vw;
-display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-align-items: center;
-position: relative; overflow: hidden;
-}
-#about::before {
-content: ‘’;
-position: absolute; left: -5%; top: -20%;
-width: 50vw; height: 140%;
-background: linear-gradient(160deg, rgba(232,119,34,0.06) 0%, transparent 60%);
-pointer-events: none;
-}
-
-.about-left { position: relative; z-index: 1; }
-
-.about-badge {
-display: inline-flex; align-items: center; gap: 10px;
-background: rgba(232,119,34,0.15);
-border: 1px solid rgba(232,119,34,0.3);
-padding: 8px 20px; border-radius: 2px;
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-color: var(–orange); margin-bottom: 32px;
-}
-
-.about-h2 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(36px, 4vw, 58px);
-color: var(–white); letter-spacing: 2px; line-height: 1;
-margin-bottom: 28px;
-}
-.about-h2 span { color: var(–orange); }
-.about-p {
-font-size: 15px; font-weight: 300; line-height: 1.85;
-color: rgba(255,255,255,0.6);
-margin-bottom: 20px;
-}
-
-.about-features {
-list-style: none; margin-top: 36px; display: flex; flex-direction: column; gap: 14px;
-}
-.about-features li {
-display: flex; align-items: center; gap: 14px;
-font-size: 14px; color: rgba(255,255,255,0.8);
-}
-.about-features li::before {
-content: ‘✓’;
-width: 26px; height: 26px; border-radius: 50%;
-background: var(–orange);
-color: var(–white);
-display: flex; align-items: center; justify-content: center;
-font-size: 12px; font-weight: 700; flex-shrink: 0;
-}
-
-.about-right { position: relative; z-index: 1; }
-
-.about-img-frame {
-position: relative;
-background: linear-gradient(135deg, var(–navy) 0%, #0a2050 100%);
-border-radius: 4px; overflow: hidden;
-aspect-ratio: 4/5;
-display: flex; align-items: center; justify-content: center;
-border: 1px solid rgba(255,255,255,0.08);
-}
-.about-img-frame::before {
-content: ‘’;
-position: absolute; inset: 0;
-background: repeating-linear-gradient(
-45deg,
-transparent,
-transparent 20px,
-rgba(255,255,255,0.015) 20px,
-rgba(255,255,255,0.015) 40px
-);
-}
-.about-watermark {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(60px, 8vw, 120px);
-color: rgba(255,255,255,0.04);
-letter-spacing: 4px; text-align: center;
-line-height: 1;
-position: absolute;
-}
-.about-logo-center {
-width: 60%; object-fit: contain;
-position: relative; z-index: 1;
-filter: drop-shadow(0 0 30px rgba(232,119,34,0.3));
-}
-.about-accent {
-position: absolute; top: -16px; right: -16px;
-width: 100px; height: 100px;
-background: var(–orange);
-clip-path: polygon(100% 0, 0 0, 100% 100%);
-z-index: 2;
-}
-
-/* ── WHY US ── */
-#why {
-background: var(–white);
-padding: 100px 8vw;
-}
-.why-grid {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 2px; margin-top: 60px;
-background: var(–light-gray);
-border: 1px solid var(–light-gray);
-border-radius: 4px; overflow: hidden;
-}
-.why-card {
-background: var(–white);
-padding: 40px 32px;
-text-align: center;
-transition: background .2s;
-}
-.why-card:hover { background: var(–navy-deep); }
-.why-card:hover .why-icon { background: var(–orange); }
-.why-card:hover .why-h3 { color: var(–white); }
-.why-card:hover .why-p { color: rgba(255,255,255,0.55); }
-
-.why-icon {
-width: 60px; height: 60px; border-radius: 50%;
-background: var(–light-gray);
-display: flex; align-items: center; justify-content: center;
-margin: 0 auto 20px; font-size: 26px;
-transition: background .2s;
-}
-.why-h3 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 20px; letter-spacing: 1.5px; color: var(–navy-deep);
-margin-bottom: 12px; transition: color .2s;
-}
-.why-p { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(–gray); transition: color .2s; }
-
-/* ── QUOTE FORM ── */
-#quote {
-background: linear-gradient(135deg, var(–navy-deep) 0%, #0d2a5c 100%);
-padding: 100px 8vw;
-position: relative; overflow: hidden;
-}
-#quote::after {
-content: ‘’;
-position: absolute; right: -5%; top: -10%;
-width: 50vw; height: 120%;
-background: linear-gradient(135deg, rgba(232,119,34,0.08) 0%, transparent 60%);
-pointer-events: none;
-}
-
-.quote-inner {
-display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;
-position: relative; z-index: 1;
-}
-.quote-left .section-tag { text-align: left; }
-.quote-left .section-h2 { text-align: left; color: var(–white); }
-.quote-left .section-rule { margin: 20px 0 0; }
-.quote-intro {
-font-size: 15px; font-weight: 300; line-height: 1.85;
-color: rgba(255,255,255,0.6); margin-top: 28px;
-}
-
-.quote-contact {
-margin-top: 44px; display: flex; flex-direction: column; gap: 18px;
-}
-.quote-contact-item {
-display: flex; align-items: center; gap: 16px;
-}
-.quote-contact-icon {
-width: 40px; height: 40px; border-radius: 50%;
-background: rgba(232,119,34,0.15);
-border: 1px solid rgba(232,119,34,0.3);
-display: flex; align-items: center; justify-content: center;
-font-size: 16px; flex-shrink: 0;
-}
-.quote-contact-text { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.5; }
-.quote-contact-text strong { color: var(–white); display: block; font-size: 13px; font-weight: 600; }
-
-.quote-form {
-background: var(–white); border-radius: 4px; padding: 44px 40px;
-}
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-.form-group label {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-color: var(–gray);
-}
-.form-group input,
-.form-group select,
-.form-group textarea {
-border: 1.5px solid var(–light-gray);
-border-radius: 2px;
-padding: 12px 16px;
-font-family: ‘Barlow’, sans-serif;
-font-size: 14px; color: var(–navy-deep);
-background: var(–off-white);
-transition: border-color .2s;
-outline: none;
-width: 100%;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus { border-color: var(–orange); background: var(–white); }
-.form-group textarea { resize: vertical; min-height: 100px; }
-.form-group select { appearance: none; cursor: pointer; }
-
-.form-submit {
-width: 100%; padding: 16px;
-background: var(–orange); color: var(–white); border: none;
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 14px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-border-radius: 2px; cursor: pointer;
-transition: background .2s, transform .15s;
-margin-top: 8px;
-}
-.form-submit:hover { background: var(–orange-light); transform: translateY(-2px); }
-
-/* ── SECTORS ── */
-#sectors {
-background: var(–off-white);
-padding: 100px 8vw;
-}
-.sectors-grid {
-display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px;
-margin-top: 60px; border-radius: 4px; overflow: hidden;
-background: var(–light-gray);
-}
-.sector-tile {
-background: var(–navy-deep);
-padding: 60px 48px;
-position: relative; overflow: hidden;
-cursor: default;
-transition: background .3s;
-}
-.sector-tile:hover { background: var(–navy); }
-.sector-tile:hover .sector-num { opacity: 0.15; }
-
-.sector-num {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 100px; color: var(–white);
-opacity: 0.05; line-height: 1;
-position: absolute; top: 0; right: 24px;
-transition: opacity .3s;
-}
-.sector-icon { font-size: 36px; margin-bottom: 20px; }
-.sector-h3 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 28px; letter-spacing: 2px; color: var(–white);
-margin-bottom: 16px;
-}
-.sector-p { font-size: 14px; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.55); }
-
-.sector-tile.accent { background: var(–orange); }
-.sector-tile.accent:hover { background: var(–orange-light); }
-.sector-tile.accent .sector-h3 { color: var(–white); }
-.sector-tile.accent .sector-p { color: rgba(255,255,255,0.8); }
-.sector-tile.accent .sector-num { color: var(–white); }
-
-/* ── CONTACT ── */
-#contact {
-background: var(–white);
-padding: 100px 8vw;
-}
-.contact-grid {
-display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-margin-top: 60px; align-items: start;
-}
-.contact-map {
-aspect-ratio: 4/3; background: var(–light-gray);
-border-radius: 4px; overflow: hidden;
-border: 1px solid var(–light-gray);
-display: flex; align-items: center; justify-content: center;
-font-size: 14px; color: var(–gray);
-position: relative;
-}
-.contact-map iframe {
-width: 100%; height: 100%; border: none;
-}
-.contact-details { display: flex; flex-direction: column; gap: 28px; }
-.contact-item {
-display: flex; gap: 18px; align-items: flex-start;
-}
-.contact-icon {
-width: 48px; height: 48px; border-radius: 2px;
-background: var(–navy-deep);
-display: flex; align-items: center; justify-content: center;
-font-size: 20px; flex-shrink: 0;
-}
-.contact-info h4 {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-color: var(–orange); margin-bottom: 6px;
-}
-.contact-info p { font-size: 14px; color: var(–gray); line-height: 1.6; }
-.contact-info a { color: var(–navy-deep); text-decoration: none; }
-.contact-info a:hover { color: var(–orange); }
-
-/* ── FOOTER ── */
-footer {
-background: var(–navy-deep);
-padding: 60px 8vw 32px;
-border-top: 3px solid var(–orange);
-}
-.footer-top {
-display: grid; grid-template-columns: 1.5fr 1fr 1fr;
-gap: 60px; margin-bottom: 48px;
-}
-.footer-brand .nav-logo { margin-bottom: 20px; display: inline-flex; }
-.footer-brand p {
-font-size: 13px; font-weight: 300; line-height: 1.8;
-color: rgba(255,255,255,0.45); max-width: 280px;
-}
-
-.footer-col h5 {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-color: var(–orange); margin-bottom: 20px;
-}
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-col ul a {
-font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none;
-transition: color .2s;
-}
-.footer-col ul a:hover { color: var(–white); }
-
-.footer-bottom {
-border-top: 1px solid rgba(255,255,255,0.08);
-padding-top: 28px;
-display: flex; justify-content: space-between; align-items: center;
-flex-wrap: wrap; gap: 16px;
-}
-.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
-.footer-reg { font-size: 12px; color: rgba(232,119,34,0.6); }
-
-/* ── HAMBURGER (mobile) ── */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-.hamburger span { width: 24px; height: 2px; background: var(–white); border-radius: 2px; }
-
-/* ── SCROLL REVEAL ── */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.visible { opacity: 1; transform: none; }
-
-@media (max-width: 900px) {
-#hero, #about, .quote-inner, .contact-grid, .footer-top { grid-template-columns: 1fr; }
-.hero-right { display: none; }
-.sectors-grid { grid-template-columns: 1fr; }
-.footer-top { grid-template-columns: 1fr 1fr; }
-.nav-links { display: none; }
-.hamburger { display: flex; }
-.form-row { grid-template-columns: 1fr; }
-}
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ash Haven Global Ltd — Import · Export · General Goods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<!-- NAV -->
-
-<nav>
-  <a href="#hero" class="nav-logo">
-    <svg class="nav-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <!-- Shield shape -->
-      <path d="M50 5 L90 22 L90 55 C90 75 70 92 50 97 C30 92 10 75 10 55 L10 22 Z" fill="#0d2a5c" stroke="#e87722" stroke-width="2"/>
-      <!-- Globe lines -->
-      <ellipse cx="50" cy="52" rx="28" ry="28" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-      <ellipse cx="50" cy="52" rx="14" ry="28" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-      <line x1="22" y1="52" x2="78" y2="52" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-      <!-- Arrow -->
-      <path d="M35 68 L62 28 L78 44" fill="none" stroke="#e87722" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <polygon points="78,44 68,24 88,34" fill="#e87722"/>
-    </svg>
-    <div class="nav-logo-text">
-      <span class="brand">ASH HAVEN GLOBAL LTD</span>
-      <span class="sub">Import · Export · General Goods</span>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#sectors">Sectors</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
-  </ul>
-  <div class="hamburger">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-
-<!-- HERO -->
-
-<section id="hero">
-  <div class="hero-geo"></div>
-  <div class="hero-grid-lines"></div>
-  <div class="hero-left">
-    <span class="hero-tag">Accra, Ghana · Est. 2020</span>
-    <h1 class="hero-h1">
-      GLOBAL TRADE<br><span>STARTS HERE</span>
-    </h1>
-    <p class="hero-p">Ash Haven Global Ltd connects Ghana to the world — providing end-to-end import, export, and supply chain solutions for general goods and mining commodities.</p>
-    <div class="hero-actions">
-      <a href="#quote" class="btn-primary">Request a Quote</a>
-      <a href="#services" class="btn-outline">Our Services</a>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <div class="hero-stat-num">4+</div>
-        <div class="hero-stat-label">Core Sectors</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">GH</div>
-        <div class="hero-stat-label">Accra Based</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">24/7</div>
-        <div class="hero-stat-label">Support</div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-logo-display">
-      <div class="hero-logo-bg">
-        <svg class="hero-logo-img" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-          <!-- Shield -->
-          <path d="M100 10 L180 44 L180 120 C180 165 145 195 100 208 C55 195 20 165 20 120 L20 44 Z" fill="#0d2a5c"/>
-          <path d="M100 10 L180 44 L180 120 C180 165 145 195 100 208 C55 195 20 165 20 120 L20 44 Z" fill="none" stroke="#e87722" stroke-width="3"/>
-          <!-- Globe -->
-          <ellipse cx="100" cy="115" rx="55" ry="55" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
-          <ellipse cx="100" cy="115" rx="27" ry="55" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
-          <line x1="45" y1="115" x2="155" y2="115" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
-          <line x1="45" y1="90" x2="155" y2="90" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <line x1="45" y1="140" x2="155" y2="140" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <!-- Arrow swoosh -->
-          <path d="M65 148 Q75 70 130 60" fill="none" stroke="#e87722" stroke-width="6" stroke-linecap="round"/>
-          <polygon points="130,60 110,52 130,42 148,62" fill="#e87722"/>
-          <!-- Bottom swash -->
-          <path d="M30 148 Q65 175 100 165 Q135 155 170 148" fill="none" stroke="#e87722" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
-        </svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-
-<section id="services">
-  <div class="section-header reveal">
-    <span class="section-tag">What We Do</span>
-    <h2 class="section-h2">OUR <span>SERVICES</span></h2>
-    <div class="section-rule"></div>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-icon">🚢</div>
-      <h3 class="service-h3">Import Services</h3>
-      <p class="service-p">We handle the end-to-end importation of general and specialized goods into Ghana — managing customs clearance, documentation, freight forwarding, and last-mile delivery.</p>
-      <a href="#quote" class="service-link">Enquire →</a>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon">✈️</div>
-      <h3 class="service-h3">Export Services</h3>
-      <p class="service-p">We facilitate the export of Ghanaian goods to international markets with full compliance support, cargo booking, and documentation services for smooth cross-border trade.</p>
-      <a href="#quote" class="service-link">Enquire →</a>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon">📦</div>
-      <h3 class="service-h3">General Goods Supply</h3>
-      <p class="service-p">From household consumer products to industrial supplies, we source and supply a wide variety of general merchandise to businesses and organizations across Ghana.</p>
-      <a href="#quote" class="service-link">Enquire →</a>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon">⛏️</div>
-      <h3 class="service-h3">Mining Support</h3>
-      <p class="service-p">We supply mining equipment, consumables, and materials to support Ghana's growing mining industry — offering procurement, logistics, and delivery solutions to mining sites.</p>
-      <a href="#quote" class="service-link">Enquire →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-
-<section id="about">
-  <div class="about-left reveal">
-    <div class="about-badge">📋 Company Profile</div>
-    <h2 class="about-h2">TRUSTED PARTNER IN <span>GLOBAL TRADE</span></h2>
-    <p class="about-p">Ash Haven Global Ltd is a duly registered Ghanaian company authorized to carry on business in import, export, supply of general goods, and mining. Operating from East Legon, Accra, we serve clients across Ghana and beyond.</p>
-    <p class="about-p">Our commitment is to deliver reliable, transparent, and efficient trade solutions — building lasting partnerships grounded in integrity and professionalism.</p>
-    <ul class="about-features">
-      <li>Fully licensed and registered in Ghana</li>
-      <li>Expertise across import, export & mining sectors</li>
-      <li>End-to-end logistics and documentation support</li>
-      <li>Dedicated client support team</li>
-      <li>Competitive pricing and transparent processes</li>
-    </ul>
-  </div>
-  <div class="about-right reveal">
-    <div class="about-img-frame">
-      <div class="about-watermark">GLOBAL</div>
-      <svg class="about-logo-center" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-        <path d="M100 10 L180 44 L180 120 C180 165 145 195 100 208 C55 195 20 165 20 120 L20 44 Z" fill="#0d2a5c"/>
-        <path d="M100 10 L180 44 L180 120 C180 165 145 195 100 208 C55 195 20 165 20 120 L20 44 Z" fill="none" stroke="#e87722" stroke-width="3"/>
-        <ellipse cx="100" cy="115" rx="55" ry="55" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-        <ellipse cx="100" cy="115" rx="27" ry="55" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-        <line x1="45" y1="115" x2="155" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-        <path d="M65 148 Q75 70 130 60" fill="none" stroke="#e87722" stroke-width="6" stroke-linecap="round"/>
-        <polygon points="130,60 110,52 130,42 148,62" fill="#e87722"/>
-        <path d="M30 148 Q65 175 100 165 Q135 155 170 148" fill="none" stroke="#e87722" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <svg class="preloader-logo" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+        <path class="shield-path" d="M50 4 L92 20 L92 56 C92 78 73 96 50 104 C27 96 8 78 8 56 L8 20 Z"/>
+        <ellipse class="globe-eq" cx="50" cy="56" rx="30" ry="30"/>
+        <ellipse class="globe-me" cx="50" cy="56" rx="15" ry="30"/>
+        <line class="globe-line" x1="20" y1="56" x2="80" y2="56"/>
+        <path class="arrow-path" d="M34 74 Q44 28 68 20"/>
+        <polygon class="arrow-head" points="68,20 56,14 70,8 82,22"/>
+        <path class="swash" d="M18 72 Q35 86 50 82 Q65 78 82 72"/>
       </svg>
-      <div class="about-accent"></div>
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
     </div>
   </div>
-</section>
 
-<!-- WHY US -->
+  <!-- CURSOR -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-<section id="why">
-  <div class="section-header reveal">
-    <span class="section-tag">Why Ash Haven</span>
-    <h2 class="section-h2">WHY CHOOSE <span>US</span></h2>
-    <div class="section-rule"></div>
-  </div>
-  <div class="why-grid">
-    <div class="why-card reveal">
-      <div class="why-icon">🏛️</div>
-      <h3 class="why-h3">Fully Authorized</h3>
-      <p class="why-p">Registered and authorized by Ghanaian authorities to conduct import, export, and mining operations.</p>
-    </div>
-    <div class="why-card reveal">
-      <div class="why-icon">🌍</div>
-      <h3 class="why-h3">Global Network</h3>
-      <p class="why-p">We maintain relationships with international suppliers, freight agents, and logistics partners worldwide.</p>
-    </div>
-    <div class="why-card reveal">
-      <div class="why-icon">⚡</div>
-      <h3 class="why-h3">Fast Turnaround</h3>
-      <p class="why-p">We move swiftly from inquiry to delivery, minimizing delays and keeping your supply chain running.</p>
-    </div>
-    <div class="why-card reveal">
-      <div class="why-icon">🛡️</div>
-      <h3 class="why-h3">Reliable & Transparent</h3>
-      <p class="why-p">We provide full visibility on pricing and process — no surprises, no hidden costs.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SECTORS -->
-
-<section id="sectors">
-  <div class="section-header reveal">
-    <span class="section-tag">Industry Focus</span>
-    <h2 class="section-h2">AUTHORIZED <span>SECTORS</span></h2>
-    <div class="section-rule"></div>
-  </div>
-  <div class="sectors-grid reveal">
-    <div class="sector-tile">
-      <div class="sector-num">01</div>
-      <div class="sector-icon">🚢</div>
-      <h3 class="sector-h3">Import</h3>
-      <p class="sector-p">Importing general goods, consumer products, industrial materials, and specialized commodities into Ghana from global markets.</p>
-    </div>
-    <div class="sector-tile accent">
-      <div class="sector-num">02</div>
-      <div class="sector-icon">✈️</div>
-      <h3 class="sector-h3">Export</h3>
-      <p class="sector-p">Exporting Ghanaian and regional goods to international buyers with full regulatory compliance and documentation support.</p>
-    </div>
-    <div class="sector-tile accent">
-      <div class="sector-num">03</div>
-      <div class="sector-icon">📦</div>
-      <h3 class="sector-h3">General Goods Supply</h3>
-      <p class="sector-p">Supply and distribution of general merchandise across retail, commercial, and institutional sectors throughout Ghana.</p>
-    </div>
-    <div class="sector-tile">
-      <div class="sector-num">04</div>
-      <div class="sector-icon">⛏️</div>
-      <h3 class="sector-h3">Mining</h3>
-      <p class="sector-p">Procurement and supply of equipment, consumables, and materials to support Ghana's active mining and extractive industries.</p>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE FORM -->
-
-<section id="quote">
-  <div class="quote-inner">
-    <div class="quote-left reveal">
-      <span class="section-tag">Start Today</span>
-      <h2 class="section-h2" style="color:var(--white);">GET A <span>QUOTE</span></h2>
-      <div class="section-rule" style="margin:20px 0 0;"></div>
-      <p class="quote-intro">Fill in the form and our team will respond within 24 hours with pricing and availability for your specific cargo or supply requirements.</p>
-      <div class="quote-contact">
-        <div class="quote-contact-item">
-          <div class="quote-contact-icon">📞</div>
-          <div class="quote-contact-text">
-            <strong>Phone / WhatsApp</strong>
-            050 376 1285 / 024 655 8859
-          </div>
-        </div>
-        <div class="quote-contact-item">
-          <div class="quote-contact-icon">✉️</div>
-          <div class="quote-contact-text">
-            <strong>Email</strong>
-            info@ashhavenglobal.com
-          </div>
-        </div>
-        <div class="quote-contact-item">
-          <div class="quote-contact-icon">📍</div>
-          <div class="quote-contact-text">
-            <strong>Address</strong>
-            ASH Haven Global, East Legon, Accra
-          </div>
-        </div>
-        <div class="quote-contact-item">
-          <div class="quote-contact-icon">🌐</div>
-          <div class="quote-contact-text">
-            <strong>Website</strong>
-            ashhavenglobal.com
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="quote-form reveal">
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" placeholder="John"/>
-        </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" placeholder="Mensah"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="you@example.com"/>
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" placeholder="+233 XX XXX XXXX"/>
-      </div>
-      <div class="form-group">
-        <label>Service Type</label>
-        <select>
-          <option value="">— Select a Service —</option>
-          <option>Import</option>
-          <option>Export</option>
-          <option>General Goods Supply</option>
-          <option>Mining Supplies</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Commodity / Goods Description</label>
-        <input type="text" placeholder="e.g. Electronic equipment, construction materials…"/>
-      </div>
-      <div class="form-group">
-        <label>Origin / Destination</label>
-        <input type="text" placeholder="e.g. Accra → Dubai"/>
-      </div>
-      <div class="form-group">
-        <label>Additional Details</label>
-        <textarea placeholder="Quantity, dimensions, special requirements…"></textarea>
-      </div>
-      <button class="form-submit" onclick="alert('Thank you! We will contact you within 24 hours.')">Submit Request →</button>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-
-<section id="contact">
-  <div class="section-header reveal">
-    <span class="section-tag">Find Us</span>
-    <h2 class="section-h2">GET IN <span>TOUCH</span></h2>
-    <div class="section-rule"></div>
-  </div>
-  <div class="contact-grid">
-    <div class="contact-map reveal">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.0!2d-0.166!3d5.636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzgnMTEuMyJOIDDCsDEwJzE2LjgiVw!5e0!3m2!1sen!2sgh!4v1620000000000!5m2!1sen!2sgh"
-        allowfullscreen="" loading="lazy">
-      </iframe>
-    </div>
-    <div class="contact-details reveal">
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div class="contact-info">
-          <h4>Physical Address</h4>
-          <p>ASH Haven Global, East Legon, Accra<br/>PO Box CT 10619, Cantonments, Accra</p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📞</div>
-        <div class="contact-info">
-          <h4>Phone Numbers</h4>
-          <p>
-            <a href="tel:+233503761285">050 376 1285</a><br/>
-            <a href="tel:+233246558859">024 655 8859</a>
-          </p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">✉️</div>
-        <div class="contact-info">
-          <h4>Email</h4>
-          <p>
-            <a href="mailto:info@ashhavenglobal.com">info@ashhavenglobal.com</a><br/>
-            <a href="mailto:support@ashhavenglobal.com">support@ashhavenglobal.com</a>
-          </p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">🌐</div>
-        <div class="contact-info">
-          <h4>Online</h4>
-          <p><a href="https://ashhavenglobal.com" target="_blank">ashhavenglobal.com</a><br/>GPS: GD-217-8223</p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">🕐</div>
-        <div class="contact-info">
-          <h4>Business Hours</h4>
-          <p>Monday – Friday: 8:00 AM – 5:00 PM<br/>Saturday: 9:00 AM – 1:00 PM</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#hero" class="nav-logo">
-        <svg width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <path d="M50 5 L90 22 L90 55 C90 75 70 92 50 97 C30 92 10 75 10 55 L10 22 Z" fill="#0d2a5c" stroke="#e87722" stroke-width="2"/>
-          <ellipse cx="50" cy="52" rx="28" ry="28" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-          <ellipse cx="50" cy="52" rx="14" ry="28" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-          <line x1="22" y1="52" x2="78" y2="52" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-          <path d="M35 68 L62 28 L78 44" fill="none" stroke="#e87722" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <polygon points="78,44 68,24 88,34" fill="#e87722"/>
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand">
+        <svg class="nav-logo-svg" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 4 L92 20 L92 56 C92 78 73 96 50 104 C27 96 8 78 8 56 L8 20 Z" fill="#0b2060" stroke="#f07c1e" stroke-width="2.5"/>
+          <ellipse cx="50" cy="56" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <ellipse cx="50" cy="56" rx="15" ry="30" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <line x1="20" y1="56" x2="80" y2="56" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <path d="M34 74 Q44 28 68 20" fill="none" stroke="#f07c1e" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="68,20 56,14 70,8 82,22" fill="#f07c1e"/>
+          <path d="M18 72 Q35 86 50 82 Q65 78 82 72" fill="none" stroke="#f07c1e" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
         </svg>
-        <div class="nav-logo-text">
-          <span class="brand">ASH HAVEN GLOBAL LTD</span>
-          <span class="sub">Import · Export · General Goods</span>
+        <div class="brand-text">
+          <span class="brand-name">ASH HAVEN GLOBAL</span>
+          <span class="brand-tagline">Import · Export · General Goods</span>
         </div>
       </a>
-      <p>Your trusted partner for import, export, general goods supply, and mining support — connecting Ghana to the global marketplace.</p>
-    </div>
-    <div class="footer-col">
-      <h5>Quick Links</h5>
-      <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#sectors">Sectors</a></li>
-        <li><a href="#why">Why Us</a></li>
-        <li><a href="#quote">Get a Quote</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#sectors" class="nav-link">Sectors</a></li>
+        <li><a href="#why" class="nav-link">Why Us</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#quote" class="nav-btn">Get a Quote</a></li>
       </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="footer-col">
-      <h5>Services</h5>
-      <ul>
-        <li><a href="#quote">Import</a></li>
-        <li><a href="#quote">Export</a></li>
-        <li><a href="#quote">General Goods Supply</a></li>
-        <li><a href="#quote">Mining Supplies</a></li>
-      </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-pill" data-aos="fade-up" data-aos-delay="200">
+          <span class="pill-dot"></span>
+          Accra, Ghana &nbsp;·&nbsp; Global Trade Partner
+        </div>
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="350">
+          Connecting<br/>
+          <span class="title-highlight">Ghana</span> to the<br/>
+          <em>World</em>
+        </h1>
+        <p class="hero-desc" data-aos="fade-up" data-aos-delay="500">
+          End-to-end import, export, and supply solutions for general goods and mining — trusted by businesses across Ghana and beyond.
+        </p>
+        <div class="hero-actions" data-aos="fade-up" data-aos-delay="650">
+          <a href="#quote" class="btn btn-primary">
+            <span>Request a Quote</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="btn btn-ghost">
+            <span>Explore Services</span>
+          </a>
+        </div>
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="800">
+          <div class="stat">
+            <strong class="stat-num" data-count="4">0</strong>
+            <span class="stat-label">Core Sectors</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <strong class="stat-num" data-count="100">0</strong><strong style="font-size:1.5rem;color:var(--orange)">%</strong>
+            <span class="stat-label">Licensed & Compliant</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <strong class="stat-num" data-count="24">0</strong><strong style="font-size:1.5rem;color:var(--orange)">/7</strong>
+            <span class="stat-label">Client Support</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
+        <div class="visual-card-wrap">
+          <div class="visual-ring ring-1"></div>
+          <div class="visual-ring ring-2"></div>
+          <div class="visual-ring ring-3"></div>
+          <div class="visual-center">
+            <svg class="big-logo" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="shieldGrad" cx="50%" cy="35%" r="65%">
+                  <stop offset="0%" stop-color="#1a3a8a"/>
+                  <stop offset="100%" stop-color="#071230"/>
+                </radialGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <path d="M100 8 L184 40 L184 112 C184 158 148 188 100 204 C52 188 16 158 16 112 L16 40 Z" fill="url(#shieldGrad)" stroke="#f07c1e" stroke-width="2.5"/>
+              <ellipse cx="100" cy="114" rx="56" ry="56" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+              <ellipse cx="100" cy="114" rx="28" ry="56" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+              <line x1="44" y1="114" x2="156" y2="114" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+              <line x1="44" y1="90" x2="156" y2="90" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <line x1="44" y1="138" x2="156" y2="138" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <path d="M66 152 Q80 56 136 40" fill="none" stroke="#f07c1e" stroke-width="5.5" stroke-linecap="round" filter="url(#glow)"/>
+              <polygon points="136,40 116,32 132,18 156,38" fill="#f07c1e" filter="url(#glow)"/>
+              <path d="M28 148 Q60 172 100 165 Q140 158 172 148" fill="none" stroke="#f07c1e" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
+            </svg>
+          </div>
+          <!-- Floating badges -->
+          <div class="float-badge badge-import">
+            <span class="badge-icon">🚢</span>
+            <span>Import</span>
+          </div>
+          <div class="float-badge badge-export">
+            <span class="badge-icon">✈️</span>
+            <span>Export</span>
+          </div>
+          <div class="float-badge badge-mining">
+            <span class="badge-icon">⛏️</span>
+            <span>Mining</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>Import</span><span class="sep">◆</span>
+      <span>Export</span><span class="sep">◆</span>
+      <span>General Goods</span><span class="sep">◆</span>
+      <span>Mining</span><span class="sep">◆</span>
+      <span>Accra, Ghana</span><span class="sep">◆</span>
+      <span>Global Trade</span><span class="sep">◆</span>
+      <span>Logistics</span><span class="sep">◆</span>
+      <span>Customs Clearance</span><span class="sep">◆</span>
+      <span>Import</span><span class="sep">◆</span>
+      <span>Export</span><span class="sep">◆</span>
+      <span>General Goods</span><span class="sep">◆</span>
+      <span>Mining</span><span class="sep">◆</span>
+      <span>Accra, Ghana</span><span class="sep">◆</span>
+      <span>Global Trade</span><span class="sep">◆</span>
+      <span>Logistics</span><span class="sep">◆</span>
+      <span>Customs Clearance</span><span class="sep">◆</span>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2024 Ash Haven Global Ltd. All rights reserved.</p>
-    <p class="footer-reg">East Legon, Accra · GPS: GD-217-8223 · ashhavenglobal.com</p>
-  </div>
-</footer>
 
-<script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">Our Services</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+        What We <span>Do Best</span>
+      </h2>
+      <p class="section-sub" data-aos="fade-up" data-aos-delay="200">
+        From cargo to commodities — we handle every step of the trade journey with precision and care.
+      </p>
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-card-top">
+            <div class="service-num">01</div>
+            <div class="service-icon-wrap">🚢</div>
+          </div>
+          <h3 class="service-name">Import Services</h3>
+          <p class="service-desc">Full-cycle importation of goods into Ghana — freight booking, customs clearance, documentation, and last-mile delivery to your door.</p>
+          <ul class="service-features">
+            <li>Customs clearance</li>
+            <li>Freight forwarding</li>
+            <li>Door-to-door delivery</li>
+          </ul>
+          <a href="#quote" class="service-cta">Get Import Quote <span>→</span></a>
+        </div>
+        <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
+          <div class="featured-tag">Most Popular</div>
+          <div class="service-card-top">
+            <div class="service-num">02</div>
+            <div class="service-icon-wrap">✈️</div>
+          </div>
+          <h3 class="service-name">Export Services</h3>
+          <p class="service-desc">We move Ghanaian and regional goods to international markets — handling cargo booking, export permits, packing, and documentation.</p>
+          <ul class="service-features">
+            <li>Export documentation</li>
+            <li>Cargo booking</li>
+            <li>Regulatory compliance</li>
+          </ul>
+          <a href="#quote" class="service-cta">Get Export Quote <span>→</span></a>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-card-top">
+            <div class="service-num">03</div>
+            <div class="service-icon-wrap">📦</div>
+          </div>
+          <h3 class="service-name">General Goods Supply</h3>
+          <p class="service-desc">We source and supply a wide range of general merchandise — consumer goods, industrial materials, and commercial products across Ghana.</p>
+          <ul class="service-features">
+            <li>Bulk & retail sourcing</li>
+            <li>Warehousing support</li>
+            <li>Nationwide distribution</li>
+          </ul>
+          <a href="#quote" class="service-cta">Get Supply Quote <span>→</span></a>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-card-top">
+            <div class="service-num">04</div>
+            <div class="service-icon-wrap">⛏️</div>
+          </div>
+          <h3 class="service-name">Mining Support</h3>
+          <p class="service-desc">Equipment, consumables, and material procurement for Ghana's active mining sector — delivered directly to site with full logistics management.</p>
+          <ul class="service-features">
+            <li>Equipment procurement</li>
+            <li>Site delivery</li>
+            <li>Mining consumables</li>
+          </ul>
+          <a href="#quote" class="service-cta">Get Mining Quote <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Stagger children
-  document.querySelectorAll('.services-grid, .why-grid').forEach(grid => {
-    [...grid.children].forEach((card, i) => {
-      card.style.transitionDelay = `${i * 0.1}s`;
-    });
-  });
-</script>
+  <!-- ABOUT -->
+  <section id="about" class="section section-dark">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-left" data-aos="fade-right">
+          <div class="about-img-block">
+            <div class="about-card-stat">
+              <strong>GH</strong>
+              <span>Based in Ghana</span>
+            </div>
+            <div class="about-card-stat stat-bottom">
+              <strong>GPS</strong>
+              <span>GD-217-8223</span>
+            </div>
+            <div class="about-logo-frame">
+              <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="sg2" cx="50%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#1e4aaa"/>
+                    <stop offset="100%" stop-color="#071230"/>
+                  </radialGradient>
+                </defs>
+                <path d="M100 8 L184 40 L184 112 C184 158 148 188 100 204 C52 188 16 158 16 112 L16 40 Z" fill="url(#sg2)" stroke="#f07c1e" stroke-width="2.5"/>
+                <ellipse cx="100" cy="114" rx="56" ry="56" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+                <ellipse cx="100" cy="114" rx="28" ry="56" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+                <line x1="44" y1="114" x2="156" y2="114" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+                <path d="M66 152 Q80 56 136 40" fill="none" stroke="#f07c1e" stroke-width="5.5" stroke-linecap="round"/>
+                <polygon points="136,40 116,32 132,18 156,38" fill="#f07c1e"/>
+                <path d="M28 148 Q60 172 100 165 Q140 158 172 148" fill="none" stroke="#f07c1e" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="about-right" data-aos="fade-left">
+          <div class="section-label light">About Us</div>
+          <h2 class="section-title light">Your Trusted <span>Trade Partner</span> in Ghana</h2>
+          <p class="about-para">Ash Haven Global Ltd is a fully registered and authorized Ghanaian company specializing in import, export, supply of general goods, and mining. Operating from East Legon, Accra, we deliver reliable and transparent trade solutions to businesses and organizations.</p>
+          <p class="about-para">We combine local expertise with global connections to make cross-border trade seamless — from documentation to final delivery.</p>
+          <div class="about-checks">
+            <div class="check-item"><div class="check-icon">✓</div><span>Fully licensed & registered in Ghana</span></div>
+            <div class="check-item"><div class="check-icon">✓</div><span>Import, Export, Mining & General Supply authorized</span></div>
+            <div class="check-item"><div class="check-icon">✓</div><span>End-to-end logistics & documentation support</span></div>
+            <div class="check-item"><div class="check-icon">✓</div><span>Transparent pricing with no hidden charges</span></div>
+            <div class="check-item"><div class="check-icon">✓</div><span>Dedicated 24/7 client support team</span></div>
+          </div>
+          <a href="#quote" class="btn btn-primary mt-btn">Start a Conversation <span style="margin-left:8px">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- SECTORS -->
+  <section id="sectors" class="section">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">Industry Focus</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Authorized <span>Sectors</span></h2>
+      <p class="section-sub" data-aos="fade-up" data-aos-delay="200">The nature of business activities Ash Haven Global Ltd is authorized to carry on.</p>
+      <div class="sectors-grid">
+        <div class="sector-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="sector-bg"></div>
+          <div class="sector-num-big">01</div>
+          <div class="sector-emoji">🚢</div>
+          <h3>Import</h3>
+          <p>Importation of general and specialized goods, raw materials, and industrial equipment into Ghana from global suppliers.</p>
+        </div>
+        <div class="sector-card orange" data-aos="zoom-in" data-aos-delay="200">
+          <div class="sector-bg"></div>
+          <div class="sector-num-big">02</div>
+          <div class="sector-emoji">✈️</div>
+          <h3>Export</h3>
+          <p>Exportation of Ghanaian goods and commodities to international markets with full documentation and regulatory support.</p>
+        </div>
+        <div class="sector-card orange" data-aos="zoom-in" data-aos-delay="300">
+          <div class="sector-bg"></div>
+          <div class="sector-num-big">03</div>
+          <div class="sector-emoji">📦</div>
+          <h3>General Goods</h3>
+          <p>Supply and distribution of general merchandise, consumer goods, and commercial products to businesses across Ghana.</p>
+        </div>
+        <div class="sector-card" data-aos="zoom-in" data-aos-delay="400">
+          <div class="sector-bg"></div>
+          <div class="sector-num-big">04</div>
+          <div class="sector-emoji">⛏️</div>
+          <h3>Mining</h3>
+          <p>Procurement and supply of equipment, consumables, and support materials for Ghana's growing mining and extractive sector.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why" class="section section-alt">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">Why Choose Us</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">The Ash Haven <span>Advantage</span></h2>
+      <div class="why-grid">
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-icon-wrap">🏛️</div>
+          <h4>Fully Authorized</h4>
+          <p>Registered and authorized by Ghanaian regulatory authorities to conduct import, export, supply, and mining operations.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-icon-wrap">🌍</div>
+          <h4>Global Network</h4>
+          <p>Strong relationships with international suppliers, freight agents, and logistics partners across multiple continents.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-icon-wrap">⚡</div>
+          <h4>Fast Turnaround</h4>
+          <p>We move swiftly — from inquiry to delivery — minimizing delays and keeping your business supply chain running smoothly.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="why-icon-wrap">🛡️</div>
+          <h4>Transparent Pricing</h4>
+          <p>No surprises, no hidden fees. Full visibility on costs from initial quote to final delivery.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="why-icon-wrap">📋</div>
+          <h4>Document Experts</h4>
+          <p>Our team handles all import/export documentation, permits, customs filings, and compliance paperwork with precision.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="why-icon-wrap">🤝</div>
+          <h4>Dedicated Support</h4>
+          <p>A dedicated account manager for every client. We're available 24/7 to answer questions and resolve issues.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section id="quote" class="section section-dark">
+    <div class="container">
+      <div class="quote-grid">
+        <div class="quote-info" data-aos="fade-right">
+          <div class="section-label light">Get Started</div>
+          <h2 class="section-title light">Request a <span>Free Quote</span></h2>
+          <p class="about-para">Fill out the form and our team will respond within 24 hours with a personalized quote for your trade requirements.</p>
+          <div class="contact-list">
+            <div class="contact-row">
+              <div class="contact-icon-box">📞</div>
+              <div>
+                <strong>Phone / WhatsApp</strong>
+                <span>050 376 1285 / 024 655 8859</span>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon-box">✉️</div>
+              <div>
+                <strong>Email</strong>
+                <span>info@ashhavenglobal.com</span>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon-box">📍</div>
+              <div>
+                <strong>Address</strong>
+                <span>East Legon, Accra, Ghana</span>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon-box">🌐</div>
+              <div>
+                <strong>Website</strong>
+                <span>ashhavenglobal.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quote-form-wrap" data-aos="fade-left">
+          <div class="form-card">
+            <h3 class="form-title">Tell Us About Your Needs</h3>
+            <div id="formSuccess" class="form-success hidden">
+              <div class="success-icon">✅</div>
+              <strong>Quote Request Sent!</strong>
+              <p>Thank you! Our team will be in touch within 24 hours.</p>
+            </div>
+            <div id="quoteForm">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" id="fname" placeholder="John" required/>
+                  <span class="field-error" id="fnameErr"></span>
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" id="lname" placeholder="Mensah" required/>
+                  <span class="field-error" id="lnameErr"></span>
+                </div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input type="email" id="email" placeholder="you@company.com" required/>
+                  <span class="field-error" id="emailErr"></span>
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="tel" id="phone" placeholder="+233 XX XXX XXXX"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Service Required</label>
+                <div class="select-wrap">
+                  <select id="service">
+                    <option value="">— Select a Service —</option>
+                    <option>Import</option>
+                    <option>Export</option>
+                    <option>General Goods Supply</option>
+                    <option>Mining Supplies</option>
+                    <option>Other</option>
+                  </select>
+                  <span class="select-arrow">▾</span>
+                </div>
+                <span class="field-error" id="serviceErr"></span>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label>Goods / Commodity</label>
+                  <input type="text" id="goods" placeholder="e.g. Electronics, Steel…"/>
+                </div>
+                <div class="form-group">
+                  <label>Origin → Destination</label>
+                  <input type="text" id="route" placeholder="e.g. China → Accra"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Additional Details</label>
+                <textarea id="details" rows="4" placeholder="Quantity, dimensions, delivery timeline, special requirements…"></textarea>
+              </div>
+              <button class="btn btn-primary btn-full" id="submitBtn" onclick="handleFormSubmit(event)">
+                <span id="btnText">Submit Request</span>
+                <div class="btn-spinner hidden" id="btnSpinner"></div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="btnArrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">Find Us</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Get in <span>Touch</span></h2>
+      <div class="contact-grid">
+        <div class="contact-details-grid" data-aos="fade-right">
+          <div class="contact-detail-card">
+            <div class="cdc-icon">📍</div>
+            <div>
+              <h4>Physical Address</h4>
+              <p>ASH Haven Global, East Legon, Accra<br/>PO Box CT 10619, Cantonments, Accra</p>
+            </div>
+          </div>
+          <div class="contact-detail-card">
+            <div class="cdc-icon">📞</div>
+            <div>
+              <h4>Phone Numbers</h4>
+              <p><a href="tel:+233503761285">050 376 1285</a><br/><a href="tel:+233246558859">024 655 8859</a></p>
+            </div>
+          </div>
+          <div class="contact-detail-card">
+            <div class="cdc-icon">✉️</div>
+            <div>
+              <h4>Email Addresses</h4>
+              <p><a href="mailto:info@ashhavenglobal.com">info@ashhavenglobal.com</a><br/><a href="mailto:support@ashhavenglobal.com">support@ashhavenglobal.com</a></p>
+            </div>
+          </div>
+          <div class="contact-detail-card">
+            <div class="cdc-icon">🕐</div>
+            <div>
+              <h4>Business Hours</h4>
+              <p>Mon – Fri: 8:00 AM – 5:00 PM<br/>Saturday: 9:00 AM – 1:00 PM</p>
+            </div>
+          </div>
+          <div class="contact-detail-card full-width">
+            <div class="cdc-icon">🌐</div>
+            <div>
+              <h4>Online & GPS</h4>
+              <p><a href="https://ashhavenglobal.com" target="_blank">ashhavenglobal.com</a> &nbsp;·&nbsp; GPS: GD-217-8223</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-map-wrap" data-aos="fade-left">
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15879.948!2d-0.166!3d5.636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2d34a333%3A0xbed14ed8650e2dd3!2sEast%20Legon%2C%20Accra%2C%20Ghana!5e0!3m2!1sen!2sgh!4v1620000000000!5m2!1sen!2sgh"
+              allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container footer-inner">
+        <div class="footer-brand-col">
+          <a href="#hero" class="footer-logo">
+            <svg width="44" height="50" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 4 L92 20 L92 56 C92 78 73 96 50 104 C27 96 8 78 8 56 L8 20 Z" fill="#0b2060" stroke="#f07c1e" stroke-width="2.5"/>
+              <ellipse cx="50" cy="56" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <ellipse cx="50" cy="56" rx="15" ry="30" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+              <line x1="20" y1="56" x2="80" y2="56" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+              <path d="M34 74 Q44 28 68 20" fill="none" stroke="#f07c1e" stroke-width="4" stroke-linecap="round"/>
+              <polygon points="68,20 56,14 70,8 82,22" fill="#f07c1e"/>
+              <path d="M18 72 Q35 86 50 82 Q65 78 82 72" fill="none" stroke="#f07c1e" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+            </svg>
+            <div class="brand-text">
+              <span class="brand-name">ASH HAVEN GLOBAL LTD</span>
+              <span class="brand-tagline">Import · Export · General Goods</span>
+            </div>
+          </a>
+          <p class="footer-desc">Your trusted partner for import, export, general goods supply, and mining support — connecting Ghana to the global marketplace.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#sectors">Sectors</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#quote">Get a Quote</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#services">Import</a></li>
+            <li><a href="#services">Export</a></li>
+            <li><a href="#services">General Goods Supply</a></li>
+            <li><a href="#services">Mining Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+233503761285">050 376 1285</a></li>
+            <li><a href="tel:+233246558859">024 655 8859</a></li>
+            <li><a href="mailto:info@ashhavenglobal.com">info@ashhavenglobal.com</a></li>
+            <li><a href="https://ashhavenglobal.com" target="_blank">ashhavenglobal.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2024 Ash Haven Global Ltd. All rights reserved.</p>
+        <p>East Legon, Accra · GPS: GD-217-8223</p>
+      </div>
+    </div>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
